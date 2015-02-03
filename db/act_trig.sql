@@ -1,34 +1,72 @@
-create or replace trigger bi_ideas
-before insert or update on ideas
+create or replace trigger bi_actions
+before insert or update on actions
 for each row 
 declare
-	l_now date := sysdate;
 begin
 	if INSERTING then
 		if :new.id is null then
-			select ideas_seq.nextval into :new.id from dual; 
+			select activities_seq.nextval into :new.id from dual; 
 		end if;
-		:new.created := l_now;
-		:new.last_edited_by := :new.owner;
-		:new.available := l_now;
 	end if;
-	:new.last_edited := l_now;
 end;
 /
 
 
-create or replace trigger bi_comments
-before insert or update on comments
+
+create or replace trigger bi_activities
+before insert or update on activities
 for each row 
 declare
-	l_now date := sysdate;
 begin
 	if INSERTING then
-		select ideas_seq.nextval into :new.id from dual; 
-		:new.created := l_now;
-		:new.last_edited_by := :new.owner;
+		if :new.id is null then
+			select activities_seq.nextval into :new.id from dual; 
+		end if;
+		:new.created := sysdate;
 	end if;
-	:new.last_edited := l_now;
+end;
+/
+
+
+create or replace trigger bi_contacts
+before insert or update on contacts
+for each row 
+declare
+begin
+	if INSERTING then
+		if :new.id is null then
+			select activities_seq.nextval into :new.id from dual; 
+		end if;
+	end if;
+end;
+/
+
+
+create or replace trigger bi_customers
+before insert or update on customers
+for each row 
+declare
+begin
+	if INSERTING then
+		if :new.id is null then
+			select activities_seq.nextval into :new.id from dual; 
+		end if;
+	end if;
+end;
+/
+
+
+create or replace trigger bi_opportunities
+before insert or update on opportunities
+for each row 
+declare
+begin
+	if INSERTING then
+		if :new.id is null then
+			select activities_seq.nextval into :new.id from dual; 
+		end if;
+		:new.created := sysdate;
+	end if;
 end;
 /
 
@@ -37,39 +75,27 @@ create or replace trigger bi_tags
 before insert or update on tags
 for each row 
 declare
-	l_now date := sysdate;
 begin
 	if INSERTING then
-		:new.created := l_now;
-		:new.last_edited_by := :new.owner;
+		if :new.id is null then
+			select activities_seq.nextval into :new.id from dual; 
+		end if;
 	end if;
-	:new.last_edited := l_now;
 end;
 /
 
 
-create or replace trigger bi_topics
-before insert or update on topics
+create or replace trigger bi_users
+before insert or update on users
 for each row 
 declare
-	l_now date := sysdate;
 begin
 	if INSERTING then
-		select ideas_seq.nextval into :new.id from dual; 
-		:new.created := l_now;
-		:new.last_edited_by := :new.owner;
+		if :new.id is null then
+			select activities_seq.nextval into :new.id from dual; 
+		end if;
 	end if;
-	:new.last_edited := l_now;
 end;
 /
 
-
-create or replace trigger bi_votes
-before insert or update on votes
-for each row
-declare
-begin
-	:new.voted := sysdate;
-end;
-/
 

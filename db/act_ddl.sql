@@ -92,9 +92,10 @@ references organizations;
 
 ------------------------------------------------
 create table opportunities (
-	id		number		not null,
+	id			number		not null,
 	title		varchar2(200)	not null,
 	customer	number		not null,
+	created		date,
 	bid_date	date,
 	book_date	date,
 	description	clob,

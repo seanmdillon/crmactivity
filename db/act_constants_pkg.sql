@@ -1,6 +1,5 @@
 set define off
-create or replace package th_constants_pkg as
-
+create or replace package act_constants_pkg as
 
 	G_USERNAME_MAXLEN 	pls_integer := 250;
 	G_TITLE_MAXLEN		pls_integer := 250;
@@ -100,16 +99,16 @@ create or replace package th_constants_pkg as
 	PRAGMA EXCEPTION_INIT(NO_PARENT_ID_EXCEPTION, -20300);
 		
 
-end th_constants_pkg;
+end act_constants_pkg;
 /
 show errors
 
 
 
-create or replace package body th_constants_pkg as
+create or replace package body act_constants_pkg as
 
 
-end th_constants_pkg;
+end act_constants_pkg;
 /
 show errors
 

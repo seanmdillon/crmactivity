@@ -1,6 +1,7 @@
 set define off
-create or replace package th_topics_pkg as
+create or replace package act_activities_pkg as
 
+/*
 
 	-- get a topic
 	-- * p_id
@@ -65,16 +66,17 @@ create or replace package th_topics_pkg as
 			p_comment_txt		comments.comment_txt%type,
 			p_commenter		comments.owner%type) return comments.id%type;
 
+*/
 
-end th_topics_pkg;
+end act_activities_pkg;
 /
 show errors
 
 
 
-create or replace package body th_topics_pkg as
+create or replace package body act_activities_pkg as
 
-
+/*
 	---------------------------------------------
 	-- create a topic
 	function get_topic (p_id		topics.id%type) return topics%rowtype
@@ -303,9 +305,9 @@ create or replace package body th_topics_pkg as
 		returning id into l_id;
 		return l_id;
 	end comment_on_topic;
-			
+*/
 
-end th_topics_pkg;
+end act_activities_pkg;
 /
 show errors
 

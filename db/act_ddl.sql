@@ -1,3 +1,12 @@
+drop public synonym activities;
+drop public synonym tags;
+drop public synonym actions;
+drop public synonym opportunities;
+drop public synonym contacts;
+drop public synonym customers;
+drop public synonym users;
+drop public synonym organizations;
+
 drop table activities;
 drop table tags;
 drop table actions;
@@ -197,6 +206,14 @@ foreign key (organization)
 references organizations;
 
 
+create public synonym activities for activities;
+create public synonym tags for tags;
+create public synonym actions for actions;
+create public synonym opportunities for opportunities;
+create public synonym contacts for contacts;
+create public synonym customers for customers;
+create public synonym users for users;
+create public synonym organizations for organizations;
 
 
 

@@ -216,7 +216,14 @@ create public synonym users for users;
 create public synonym organizations for organizations;
 
 
-
+grant all on activities to public;
+grant all on tags to public;
+grant all on actions to public;
+grant all on opportunities to public;
+grant all on contacts to public;
+grant all on customers to public;
+grant all on users to public;
+grant all on organizations to public;
 
 
 

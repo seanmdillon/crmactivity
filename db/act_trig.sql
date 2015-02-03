@@ -71,31 +71,3 @@ end;
 /
 
 
-create or replace trigger bi_tags
-before insert or update on tags
-for each row 
-declare
-begin
-	if INSERTING then
-		if :new.id is null then
-			select activities_seq.nextval into :new.id from dual; 
-		end if;
-	end if;
-end;
-/
-
-
-create or replace trigger bi_users
-before insert or update on users
-for each row 
-declare
-begin
-	if INSERTING then
-		if :new.id is null then
-			select activities_seq.nextval into :new.id from dual; 
-		end if;
-	end if;
-end;
-/
-
-

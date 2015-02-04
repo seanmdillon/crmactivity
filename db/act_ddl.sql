@@ -132,6 +132,7 @@ create table actions (
 	action		varchar2(100)	not null,
 	description	clob,
 	due_date	date,
+	activity	number,
 	customer	number,
 	contact		number,
 	organization	number
@@ -140,6 +141,11 @@ create table actions (
 alter table actions
 add constraint actions_pk
 primary key (id);
+
+alter table actions
+add constraint actions_act_fk
+foreign key (activity)
+references activities;
 
 alter table actions
 add constraint actions_cust_fk

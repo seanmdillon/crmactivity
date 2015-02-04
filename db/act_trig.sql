@@ -24,6 +24,7 @@ begin
 		if :new.id is null then
 			select activities_seq.nextval into :new.id from dual; 
 		end if;
+		:new.created := sysdate;
 	end if;
 end;
 /

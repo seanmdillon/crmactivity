@@ -21,4 +21,28 @@ insert into customers (name, organization) values ('Redd''s Trading', 2);
 insert into customers (name, organization) values ('GWebLaw', 2);
 
 
+declare
+  o customers%rowtype;
+  c contacts%rowtype;
+begin
+  select * into o
+    from customers
+   where name = 'DIA';
+
+  insert into contacts (first_name, last_name, customer, organization)
+  values ('Dan', 'Doney', o.id, 1);
+
+  select * into c
+    from contacts
+   where last_name = 'Doney';
+
+  insert into activities (activity, customer, contact, organization)
+  values ('Met to discuss DevOps w/ CIO CTO James Harris', o.id, c.id, 1);
+
+  insert into opportunities (title, customer, monthly_value, start_date, end_date)
+  values ('DIA DevOps Factory GOVCLOUD', o.id, 85000, sysdate, sysdate+7);
+
+end;
+/
+
 commit;

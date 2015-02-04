@@ -7,9 +7,9 @@ drop public synonym customers;
 drop public synonym users;
 drop public synonym organizations;
 
+drop table actions;
 drop table activities;
 drop table tags;
-drop table actions;
 drop table opportunities;
 drop table contacts;
 drop table customers;
@@ -111,7 +111,8 @@ create table opportunities (
 	monthly_value	number(9,2),
 	one_time_value	number(9,2),
 	start_date	date,
-	end_date	date
+	end_date	date,
+        organization    number
 );
 
 
@@ -168,7 +169,8 @@ create table actions (
 	id		number		not null,
 	action		varchar2(100)	not null,
 	description	clob,
-	due_date	date,
+	created		date,
+	due		date,
 	activity	number,
 	customer	number,
 	contact		number,

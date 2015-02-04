@@ -165,6 +165,23 @@ references organizations;
 
 
 ------------------------------------------------
+create table attendees (
+	activity_id	number		not null,
+	contact_id	number		not null
+);
+
+alter table attendees
+add constraint attendees_activity_fk
+foreign key (activity_id)
+references activities;
+
+alter table attendees
+add constraint attendees_contact_fk
+foreign key (contact_id)
+references contacts;
+
+
+------------------------------------------------
 create table actions (
 	id		number		not null,
 	action		varchar2(100)	not null,

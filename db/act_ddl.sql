@@ -132,6 +132,7 @@ create table activities (
 	activity	varchar2(250) 	not null,	
 	description	clob,				
 	created		date 		not null,
+	opportunity	number,
 	customer	number,
 	contact		number,
 	organization	number
@@ -140,6 +141,11 @@ create table activities (
 alter table activities
 add constraint acts_pk
 primary key (id);
+
+alter table activities
+add constraint acts_opp_fk
+foreign key (opportunity)
+references opportunities;
 
 alter table activities
 add constraint acts_customer_fk

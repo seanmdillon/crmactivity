@@ -127,61 +127,6 @@ references customers;
 
 
 ------------------------------------------------
-create table actions (
-	id		number		not null,
-	action		varchar2(100)	not null,
-	description	clob,
-	due_date	date,
-	activity	number,
-	customer	number,
-	contact		number,
-	organization	number
-);
-
-alter table actions
-add constraint actions_pk
-primary key (id);
-
-alter table actions
-add constraint actions_act_fk
-foreign key (activity)
-references activities;
-
-alter table actions
-add constraint actions_cust_fk
-foreign key (customer)
-references customers;
-
-alter table actions
-add constraint actions_contacts_fk
-foreign key (contact)
-references contacts;
-
-alter table actions
-add constraint actions_org_fk
-foreign key (organization)
-references organizations;
-
-
-
-------------------------------------------------
-create table tags (
-	tag		varchar2(100)	not null,
-	organization	number
-);
-
-alter table tags
-add constraint tags_pk
-primary key (tag);
-
-alter table tags
-add constraint tags_org_fk
-foreign key (organization)
-references organizations;
-
-
-
-------------------------------------------------
 create table activities (
 	id		number 		not null,
 	activity	varchar2(250) 	not null,	
@@ -210,6 +155,67 @@ alter table activities
 add constraint acts_org_fk
 foreign key (organization)
 references organizations;
+
+
+------------------------------------------------
+create table actions (
+	id		number		not null,
+	action		varchar2(100)	not null,
+	description	clob,
+	due_date	date,
+	activity	number,
+	customer	number,
+	contact		number,
+	opportunity	number,
+	organization	number
+);
+
+alter table actions
+add constraint actions_pk
+primary key (id);
+
+alter table actions
+add constraint actions_act_fk
+foreign key (activity)
+references activities;
+
+alter table actions
+add constraint actions_cust_fk
+foreign key (customer)
+references customers;
+
+alter table actions
+add constraint actions_opp_fk
+foreign key (opportunity)
+references opportunities;
+
+alter table actions
+add constraint actions_contacts_fk
+foreign key (contact)
+references contacts;
+
+alter table actions
+add constraint actions_org_fk
+foreign key (organization)
+references organizations;
+
+
+
+------------------------------------------------
+create table tags (
+	tag		varchar2(100)	not null,
+	organization	number
+);
+
+alter table tags
+add constraint tags_pk
+primary key (tag);
+
+alter table tags
+add constraint tags_org_fk
+foreign key (organization)
+references organizations;
+
 
 
 create public synonym activities for activities;

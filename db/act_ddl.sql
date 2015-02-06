@@ -1,5 +1,6 @@
 drop public synonym activities;
 drop public synonym tags;
+drop public synonym attendees;
 drop public synonym actions;
 drop public synonym opportunities;
 drop public synonym contacts;
@@ -12,15 +13,14 @@ drop table activities;
 drop table tags;
 drop table opportunities;
 drop table contacts;
+drop table attendees;
 drop table customers;
 drop table users;
 drop table organizations;
 
 drop sequence activities_seq;
 
-
 create sequence activities_seq start with 100;
-
 
 ------------------------------------------------
 create table organizations (
@@ -162,6 +162,7 @@ alter table activities
 add constraint acts_org_fk
 foreign key (organization)
 references organizations;
+
 
 
 ------------------------------------------------
